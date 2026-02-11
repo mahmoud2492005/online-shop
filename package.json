@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
-    
+
   },
   "prettier": {
     "printWidth": 100,
@@ -35,7 +35,7 @@
     "flowbite": "^4.0.1",
     "html2pdf.js": "^0.14.0",
     "jwt-decode": "^4.0.0",
-    "ngx-cookie-service": "^21.1.0",
+    "ngx-cookie-service": "^20.0.0",
     "ngx-owl-carousel-o": "^20.0.1",
     "ngx-pagination": "^6.0.3",
     "ngx-spinner": "^19.0.0",
