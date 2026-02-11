@@ -1,0 +1,50 @@
+
+::ng-deep .owl-nav {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  z-index: 10;
+    left: 0;
+  right: 0;
+}
+/* ::ng-deep .owl-theme .owl-nav [class*=owl-]{
+    background-color: transparent;   
+}
+::ng-deep .owl-theme .owl-nav [class*=owl-]:hover{
+    background-color: darkblue;
+} */
+ ::ng-deep .owl-theme .owl-nav [class*=owl-] {
+    background: none !important;   
+    border: none !important;      
+    box-shadow: none !important;   
+}
+
+::ng-deep .owl-theme .owl-nav [class*=owl-]:hover {
+    background: none !important;   
+}
+
+
+
+ ::ng-deep .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
+  background-color: #8B5E35;
+}
+ /* ::ng-deep .owl-theme .owl-dots .owl-dot span{
+  transform:translateY(-40px);
+} */
+ ::ng-deep .owl-theme .owl-dots {
+  position: absolute;
+  bottom: 10px;   /* عدل الرقم براحتك */
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot span{
+  transform: none;
+}
+

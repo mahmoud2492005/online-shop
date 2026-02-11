@@ -1,0 +1,14 @@
+.homeShape{
+    /* Vector */
+
+position: absolute;
+left: 17.64%;
+right: 73.34%;
+top: 68.74%;
+bottom: 21.48%;
+
+/* main */
+background: #8B5E35;
+transform: rotate(84.8deg);
+
+}

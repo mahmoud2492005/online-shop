@@ -1,0 +1,376 @@
+<section class="bg-gray-50 py-24">
+          <div class="px-4 sm:px-8 lg:px-24 flex flex-wrap lg:flex-nowrap items-center gap-2 text-sm text-gray-500 mb-2 pb-10 w-full lg:w-[584px] ">
+      <span routerLink="/home" class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[16px] sm:text-[18px] leading-8 tracking-normal text-[#8B5E35] " >Home</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+       <span  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[16px] sm:text-[18px] leading-8 tracking-normal text-[#8B5E35]" routerLink="/products" >Category</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+       <span routerLink="/cart"  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[16px] sm:text-[18px] leading-8 tracking-normal text-[#8B5E35]" >Cart</span>
+
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+       <span  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[16px] sm:text-[18px] leading-8 tracking-normal text-[#8B5E35]" routerLink="/allorders" >AllOrders</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+
+       <span  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[16px] sm:text-[18px] leading-8 tracking-normal hover:text-[#8B5E35]" >CheckOut</span>
+
+
+    </div>
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2 space-y-6">
+        <!-- <form [formGroup]="checkFormDesign" class=""> -->
+
+      <!-- Address -->
+@for (addressNum of addresses; track addressNum.id) {
+            <label for="addressFor" class="" >
+                      <div class="  bg-[#FFFFFF] shadow-sm w-full max-w-[820px] lg:w-[820px] h-auto min-h-32 gap-[133px] rounded-[10px] p-4 mt-5 ">
+
+        <!-- Address Item -->
+        <div class="  flex flex-wrap md:flex-nowrap justify-between items-start mb-4">
+          <div class="flex gap-3">
+            <input id="addressFor"   type="radio"  class="accent-amber-700" 
+              name="selectedAddress"
+  [value]="addressNum"
+  (change)="onAddressSelect(addressNum)"
+   formControlName="selectedAddress"
+            >
+
+
+            
+
+
+
+            <div>
+              <h3 class=" text-[#090F41] font-medium text-[18px] md:text-[24px] leading-8 ">
+                {{addressNum.details}}
+                <!-- <span class="ml-2 text-xs border px-2 py-1 rounded">{{addressNum.type}}</span> -->
+              </h3>
+              <p class=" space-y-2 h-6 font-poppins font-normal text-[16px] leading-6 tracking-[0px] text-[font-poppins font-normal text-[#090F41]">
+                {{addressNum.city}}
+              </p>
+              <p class="space-y-2 pt-2 h-6 text-[#090F41]  font-['poppins'] font-medium text-[16px] leading-4 tracking-[0%]">
+                Contact - {{addressNum.phone}}
+              </p>
+            </div>
+          </div>
+
+          <div class="flex pt-6 pe-40 gap-3 text-[#8B5E35]">
+            <button class="cursor-pointer" data-modal-target="crud-modal" data-modal-toggle="crud-modal" (click)="editAddress(addressNum)" ><i class="fa fa-pen"></i></button>
+            <button class="cursor-pointer" (click)="deleteAddress(addressNum.id)" ><i class="fa fa-trash"></i></button>
+          </div>
+        </div>
+
+      </div>
+            </label>
+
+
+}
+                  <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class=" mt-5  font-['poppins'] font-medium text-[16px] leading-5 tracking-[0.1px] w-full h-5 cursor-pointer text-[#8B5E35] flex flex-nowrap  " >
+ + Add New Address
+            </button>
+            <hr>
+
+      <!-- Shipment Method -->
+      <h2 class=" h-8 text-[#090F41] font-['poppins'] font-medium text-[24px] leading-8 tracking-[0.15px]">Shipment Method</h2>
+      <div class="w-full max-w-[820px] rounded-xxs border border-[#D1D1D8]">
+
+        <div class="w-full lg:w-[820px] h-auto">
+
+          <label for="shipmentMethod"
+            class="w-full flex flex-wrap md:flex-nowrap justify-between rounded-xxs pt-4 pr-6 pb-4 pl-6 border-b border-[#D1D1D8] ">
+            <div class="flex gap-3">
+             
+              <input (change)="free()" id="shipmentMethod" name="shipmentMethod" type="radio"  class="accent-amber-700"  >
+
+              <div>
+                <p class="font-medium"><span class="font-['poppins'] font-medium text-[16px] leading-5 tracking-[0.1px] w-[57px] h-5 opacity-100 text-[#090F41]" >Free </span>  <span class="font-['poppins'] font-normal text-[16px] leading-6 tracking-[0px] w-[129px] h-6 opacity-100 text-[#090F41]">Regular Shipment  </span> </p>
+
+              </div>
+            </div>
+            <span class="text-gray-500 text-sm">{{ getDateAfter(4) | date:'dd MMM, yyyy' }}</span>
+          </label>
+          <label for="shipmentMethod"
+            class="w-full flex flex-wrap md:flex-nowrap justify-between rounded-xxs pt-4 pr-6 pb-4 pl-6 border-b border-[#D1D1D8] ">
+            <div class="flex gap-3">
+              <input (change)="PriorityShipping()" id="shipmentMethod" name="shipmentMethod" type="radio" checked class="accent-amber-700">
+
+              <div>
+                <p class="font-medium"><span class="font-['poppins'] font-medium text-[16px] leading-5 tracking-[0.1px] w-[57px] h-5 opacity-100 text-[#090F41]" >1000 </span>  <span class="font-['poppins'] font-normal text-[16px] leading-6 tracking-[0px] w-[129px] h-6 opacity-100 text-[#090F41]">Priority Shipping  </span> </p>
+              </div>
+            </div>
+            <span class="text-gray-500 text-sm">{{ getDateAfter(2) | date:'dd MMM, yyyy' }}</span>
+          </label>
+          <label for="shipmentMethod"
+            class="w-full flex flex-wrap md:flex-nowrap justify-between rounded-xxs pt-4 pr-6 pb-4 pl-6 border-b border-[#D1D1D8] ">
+            <div class="flex gap-3">
+             
+              <input (change)="Schedule ()" id="shipmentMethod" name="shipmentMethod" type="radio"  class="accent-amber-700">
+
+              <div>
+                <p class="font-medium"><span class="font-['poppins'] font-medium text-[16px] leading-5 tracking-[0.1px] w-[57px] h-5 opacity-100 text-[#090F41]" >Schedule  </span>  <span class="font-['poppins'] font-normal text-[16px] leading-6 tracking-[0px] w-[129px] h-6 opacity-100 text-[#090F41]">Choose a date that works for you. </span> </p>
+
+              </div>
+            </div>
+              <!-- <span class="text-gray-500 text-sm">  -->
+              <input type="date" class=" ml-auto border-0 outline-none bg-transparent text-gray-500 text-sm appearance-none" > 
+            <!-- </span> -->
+          </label>
+
+
+
+
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <h2 class=" h-8 text-[#090F41] font-['poppins'] font-medium text-[24px] leading-8 tracking-[0.15px]">Payment Method</h2>
+      <div class="w-full max-w-[820px] rounded-xxs border border-[#D1D1D8]">
+
+        <div class="w-full lg:w-[820px] ">
+
+          <label for="paymentMethod"
+            class="w-full flex flex-wrap md:flex-nowrap justify-between rounded-xxs pt-4 pr-6 pb-4 pl-6 border-b border-[#D1D1D8] ">
+            <div class="flex gap-3">
+             
+              <input (change)="chosseCash()" id="paymentMethod" name="paymentMethod" type="radio" checked class="accent-amber-700">
+
+              <div>
+                <p class="font-medium"><span class="font-['poppins'] font-medium text-[16px] leading-5 tracking-[0.1px] w-[57px] h-5 opacity-100 text-[#090F41]" > Payment With Cash </span>  
+
+              </div>
+            </div>
+          </label>
+          <label for="paymentMethod"
+            class="w-full flex flex-wrap md:flex-nowrap justify-between rounded-xxs pt-4 pr-6 pb-4 pl-6 border-b border-[#D1D1D8] ">
+            <div class="flex gap-3">
+              <input (change)="chooseVisa()" id="paymentMethod" name="paymentMethod" type="radio" checked class="accent-amber-700">
+
+              <div>
+                <p class="font-medium"><span class="font-['poppins'] font-medium text-[16px] leading-5 tracking-[0.1px] w-[57px] h-5 opacity-100 text-[#090F41]" > Payment With Visa </span>  
+              </div>
+            </div>
+          </label>
+
+
+
+
+
+        </div>
+      </div>
+
+    <!-- </form> -->
+  </div>
+
+    <!-- LEFT SIDE -->
+
+
+    <!-- RIGHT SIDE / ORDER SUMMARY -->
+<div >
+      <aside class="bg-white rounded-xl shadow-lg p-6 space-y-6">
+
+    <h3 class="text-xl font-medium text-[24px] text-[#090F41] mb-6">Order Summary</h3>
+
+    <div class="space-y-3 text-sm">
+
+      <div class="flex justify-between">
+        <span class="font-normal text-[16px] text-[#090F41] ">Price</span>
+        <span class=" font-normal text-[16px] line-through text-gray-400">{{cartData.totalCartPrice}} EGP</span>
+      </div>
+
+      <div class="flex justify-between">
+    <!-- <span class="line-through text-gray-400">1000 EGP</span> -->
+
+        <span class="font-normal text-[16px] text-[#090F41]">Discount </span>
+        <span class="font-normal text-[16px] text-[#090F41]">{{ cartData.totalCartPrice - (cartData.totalCartPrice * 0.10) | number:'1.2-2' }}EGP</span>
+      </div>
+
+      <div class="flex justify-between">
+        <span class="font-normal text-[16px] text-[#090F41]">ShippingCost</span>
+        <span class="font-normal text-[#8B5E35]">
+          @if (option1===0) {
+            Free
+          } @else {
+            {{option1}}
+          }
+        </span>
+      </div>
+
+      <div class="flex justify-between">
+        <span class="font-normal text-[16px] text-[#090F41]">Coupon Applied</span>
+        <span class="font-normal text-[16px] text-[#090F41]">0.00 EGP</span>
+      </div>
+
+      <hr class=" my-6" />
+            <div class="flex justify-between">
+        <span class="text-[16px] text-[#17183B] font-semibold">TOTal</span>
+        <span class="font-normal text-[16px] text-[#17183B]">{{(((cartData.totalCartPrice)+option1)- (cartData.totalCartPrice*0.10)).toFixed(2)}}</span>
+      </div>
+
+                        <div class="flex justify-between">
+        <span class="text-[16px] text-[#17183B] font-medium ">Estimated Delivery by</span>
+        <span class="text-[16px] text-[#17183B] font-semibold">{{cartData.updatedAt |date:'dd/MM/yyyy'}}</span>
+      </div>
+                              <div class="flex justify-between">
+        <span class="text-[16px] text-[#17183B] font-medium ">Payment Method</span>
+        <span class="text-[16px] text-[#17183B] font-semibold">
+          @if (payvisa===true) {
+            Visa
+          } @else {
+            Cash
+          }
+        </span>
+      </div>
+
+
+
+              <!-- <div class="flex justify-between">
+        <span class="text-[16px] text-[#17183B] font-semibold">TOTal</span>
+        <span class="font-normal text-[16px] text-[#17183B]">10000 EGP</span>
+      </div> -->
+
+        <!-- <div class="text-right text-xs text-gray-500">
+          <div class="mb-1">Estimated Delivery by</div>
+          <div class="font-medium">01 Feb, 2023</div>
+        </div> -->
+              <!-- <div class="flex justify-between">
+        <span class="font-normal text-[16px] text-[#090F41]">Coupon Applied</span>
+        <span class="font-normal text-[16px] text-[#090F41]">0.00 EGP</span>
+      </div> -->
+      <!-- </div> -->
+
+    </div>
+
+    <!-- Coupon -->
+    <div class="flex gap-3">
+      <input type="text" placeholder="Coupon Code"
+             class="flex-1 border border-gray-200 rounded px-3 py-2 focus:ring-[#8B5E35] focus:border-[#8B5E35] items-center justify-center cursor-pointer " />
+          <button class="px-4 py-2 bg-[#8B5E35] text-white rounded  font-semibold text-[20px]">
+        Apply
+      </button>
+    </div>
+
+
+    <!-- Checkout -->
+    <button (click)="FinshPayMent()" class=" cursor-pointer w-full py-3 rounded-full bg-[#8B5E35] text-white font-semibold text-[20px] shadow">
+      Place order
+    </button>
+
+  </aside>
+</div>
+
+  </div>
+</section>
+
+
+
+
+<!-- Main modal -->
+<div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="w-full min-h-screen flex items-center justify-center bg-gray-100 p-4 ">
+
+  <div class="bg-white w-full max-w-lg rounded-3xl shadow-md p-6 relative">
+
+    <!-- X button (optional) -->
+    <div data-modal-hide="crud-modal" class=" absolute top-3 right-3 ">
+                      <button type="button" class="text-body bg-transparent hover:bg-neutral-tertiary hover:text-heading rounded-base text-sm w-9 h-9 ms-auto inline-flex justify-center items-center" data-modal-hide="crud-modal">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+                    <span class="sr-only">Close</span>
+                </button>
+    </div>
+
+    <!-- Title -->
+<div class="w-full max-w-[473px] h-auto gap-2 opacity-100 mx-auto px-4">
+  <h2 class="font-['poppins'] font-bold text-[24px] sm:text-[28px] lg:text-[32px] leading-8 tracking-[0%] text-center text-[#090F41] w-full h-auto">
+    Personal Information
+  </h2>
+
+  <p class="font-['poppins'] w-full h-auto font-normal text-[12px] sm:text-[14px] leading-4 tracking-[0%] text-center text-[#667085]">
+    Login to our store an start shopping your products
+  </p>
+</div>
+
+        <!-- Profile image -->
+    <div class="flex justify-center mt-5">
+      <div class="relative">
+        <div class="w-28 h-28  rounded-full">
+          <input id="img" (change)="onImageSelected($event)" type="file" class="hidden" />
+                   
+          <img  [src]="previewImage" class="w-28 h-28 object-cover rounded-full" />
+
+        </div>
+
+        <label for="img"
+          class="absolute bottom-1 right-1 bg-[#a06c3b] text-white p-1 rounded-full cursor-pointer">
+          ✎
+        </label>
+      </div>
+    </div>
+
+
+
+    <!-- Form -->
+    <form [formGroup]="checkOutForm"   class="mt-2 space-y-4">
+
+      <!-- Email -->
+      <div>
+
+          <app-input [element]="'textarea'" [control]="this.checkOutForm.get('shippingAddress')?.get('details')"  [idInput]="'address'" [labelInput]="'Your address for placing the order'" [placeHolder]="'Samadon Village, Ashmoon Center, Menoufia Governorate, Egypt'" ></app-input>
+      </div>
+
+      <!-- First + Last Name -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+<app-input   [control]="this.checkOutForm.get('shippingAddress')?.get('details')"    [typeInput]="'text'" [idInput]="'name'" [labelInput]="'First Name '" [placeHolder]="'Mahmoud'" ></app-input>
+
+        </div>
+
+        <div>
+<app-input   [control]="this.checkOutForm.get('shippingAddress')?.get('city')"   [typeInput]="'text'" [idInput]="'city'" [labelInput]="'City '" [placeHolder]="'Cairo'" ></app-input>
+
+        </div>
+      </div>
+
+      <!-- Birth Date -->
+      <div>
+<app-input   [control]="this.checkOutForm.get('shippingAddress')?.get('phone')"    [typeInput]="'tel'" [idInput]="'phone'" [labelInput]="'Phone '" [placeHolder]="'01005729085'" >
+  "Please enter a valid Egyptian phone number."
+</app-input>
+
+      </div>
+
+      <!-- Gender -->
+      <!-- <div>
+        <label class="block font-semibold mb-1">Site</label>
+
+        <div class="flex items-center gap-6">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="gender" class="text-[#a06c3b] " checked />
+            Office
+          </label>
+
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="gender" class="text-[#a06c3b]" />
+            Home
+          </label>
+        </div>
+      </div> -->
+
+      <!-- Save button -->
+
+      <button data-modal-hide="crud-modal" (click)="saveAddress()"  [disabled]="checkOutForm.invalid"
+        class=" disabled:bg-gray-500 disabled:cursor-not-allowed cursor-pointer w-full py-3 rounded-full bg-[#8B5E35] text-white font-semibold text-[20px] shadow">
+        Save Detailes
+      </button>
+                          <!-- <button type="submit" class="inline-flex items-center  text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                        <svg class="w-4 h-4 me-1.5 -ms-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/></svg>
+                        Add new product
+                    </button>
+                         <button data-modal-hide="crud-modal" type="button" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancel</button> -->
+
+
+    </form>
+
+  </div>
+</div>
+</div>
+<app-similar-products></app-similar-products>
+
+

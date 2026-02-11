@@ -1,0 +1,63 @@
+            <div class="relative mb-3">
+            
+                <label [for]="idInput" class="block mb-2.5 text-sm font-medium text-heading">{{labelInput}}</label>
+@if(idInput==='password' || idInput==='rePassword'){
+                                           <span (click)=" eyePass=! eyePass" class="absolute top-13 end-1 -translate-y-1/2 cursor-pointer">
+               @if( eyePass){
+        <i class="fas fa-eye"></i>
+
+        } @else {
+        <i class="fas fa-eye-slash"></i>
+
+        }
+        </span>
+}
+@if ( element ==='input' ) {
+              <input  [class]="{
+              'input-valid': control?.valid&&control?.touched,
+              'input-invalid':control?.invalid&&control?.touched
+            }" [formControl]="control" [type]="typeInput || (eyePass? 'password': 'text')"  [id]="idInput"  class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-[#8B5E35] focus:border-[#8B5E35] block w-full px-3 py-2.5 shadow-xs placeholder:text-body" [placeholder]="placeHolder" required />
+
+} @else if (element==='textarea') {
+              <textarea  [class]="{
+              'input-valid': control?.valid&&control?.touched,
+              'input-invalid':control?.invalid&&control?.touched
+            }" [formControl]="control"  [id]="idInput"  class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-[#8B5E35] focus:border-[#8B5E35] block w-full px-3 py-2.5 shadow-xs placeholder:text-body" [placeholder]="placeHolder" required > </textarea>
+
+}
+
+@if (control?.errors&&control?.touched) {
+                
+        <div id="alert-2" class="flex sm:items-center p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+  <svg class="w-4 h-4 shrink-0 mt-0.5 md:mt-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+  <div class="ms-2 text-sm ">
+
+    @if(control?.hasError('required') ){
+    "Please enter your {{labelInput}}."
+
+    }
+    @if(control?.hasError('minlength') ){
+        "Name must be at least 3 characters."
+
+    }
+    @if(control?.hasError('maxlength') ){
+    "Name cannot exceed 20 characters."
+
+    }
+    @if(control?.hasError('email') ){
+ Enter a valid email address.
+
+    }
+    @if(control?.hasError('pattern') ){
+ <ng-content></ng-content>
+    }
+    @if(control?.hasError('mismatch') ){
+    "Confirm password must match the password format."
+    }
+
+
+   
+  </div>
+</div>
+}
+</div>

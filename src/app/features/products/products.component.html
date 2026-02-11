@@ -1,0 +1,148 @@
+<app-navbar [isLogin]="true" [isLanding]="true" [isPageProudcts]="true"></app-navbar>
+
+<div class="w-full bg-[#F8F8F8] min-h-screen py-6 pt-24">
+  <div class="container mx-auto px-4 lg:px-8 ">
+
+    <p class=" flex items-center gap-2 text-sm text-gray-500 mb-2"><span routerLink="/home" class=" cursor-pointer  w-[54px] h-8 font-[Poppins] font-medium text-[18px] leading-8 tracking-normal text-[#8B5E35] " >Home</span> <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> <span  class=" cursor-pointer  w-[54px] h-8 font-[Poppins] font-medium text-[18px] leading-8 tracking-normal hover:text-[#8B5E35]" >Category</span></p>
+
+<div class="max-w-[465px] h-[99px] opacity-100 mx-auto  space-y-2 sm:px-0 " >
+      <h1 class=" mx-auto w-[110px] h-[35px] text-[#8B5E35] font-['Hedvig_Letters_Serif'] font-normal text-[26px]  leading-none tracking-normal text-center " >
+    Category
+    </h1>
+    <h2 class=" mx-auto max-w-[465px] h-[60px] text-[#090F41] font-['Poppins'] font-semibold text-[40px]     leading-none tracking-normal text-center">
+    {{filterBy}}
+    </h2>
+</div>
+
+    <div class=" hidden md:flex  items-center   justify-around mb-8 flex-wrap bg-[#EEEEEE] rounded-full w-full m-auto  ">
+          <button (click)="[filterBy='Full Outfit']"  class=" px-5 py-2   hover:rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600">
+        Full Outfit
+      </button>
+      <button (click)="[filterBy='Women']" class=" px-5 py-2  hover:rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600">Women</button>
+      <button  (click)="[filterBy='Men']" class=" px-5 py-2  hover:rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600">Men</button>
+      <button (click)="[filterBy='Electronics']"  class=" px-5 py-2  hover:rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600">Electronics</button>
+      <button (click)="[filterBy='More']" class=" px-5 py-2  hover:rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600">More</button>
+</div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-6">
+
+      <aside class=" lg:hidden lg:col-span-3 col-span-12 sm:w-full  block text-center lg:text-left bg-white p-5 rounded-xl shadow-sm h-fit">
+        <h3 class="text-lg font-semibold mb-4">Filter By</h3>
+
+        <div class="border-b pb-3 mb-3">
+          <p class="font-semibold mb-2">Category</p>
+          <ul class="space-y-2 text-gray-600">
+            <li (click)="[filterBy='Full Outfit']" >Full Outfit</li>
+            <li  (click)="[filterBy='Women']">Women</li>
+            <li  (click)="[filterBy='Men']" >Men</li>
+            <li (click)="[filterBy='Electronics']">Electronics</li>
+            <li  (click)="[filterBy='More']">More</li>
+            <li>Suits for men</li>
+          </ul>
+        </div>
+
+        <p class="font-semibold mb-2">Color Family</p>
+        <p class="font-semibold mb-2 mt-4">Price</p>
+        <p class="font-semibold mb-2 mt-4">Discount Range</p>
+      </aside>
+
+      <section class="col-span-12 ">
+
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold">{{filterBy}} ( {{ (proudctList | filtaration:filterBy).length }}) </h2>
+          <!-- <p class="text-gray-500">Sort By</p> -->
+        </div>
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-8">
+  
+@for (proudct of proudctList | paginate: { id: 'foo',
+                                                      itemsPerPage: pageSize,
+                                                      currentPage: p,
+                                                      totalItems: total } |filtaration:filterBy ; track proudct.id) {
+   
+<app-card [proudct]="proudct"></app-card>
+}
+
+
+</div>
+<div class="flex justify-center mt-4 ">
+  <!-- <pagination-controls   previousLabel="❮"
+  nextLabel="❯" class="my-pagination"  id="foo"
+                      (pageChange)="getAllProudctsData($event)"
+
+>
+</pagination-controls> -->
+<pagination-template
+  #pager="paginationApi"
+  [id]="'foo'"
+  (pageChange)="getAllProudctsData($event)">
+
+  <div class="flex justify-center items-center gap-2 my-6">
+
+    <!-- Previous -->
+    <button
+      (click)="pager.previous()"
+      [disabled]="pager.isFirstPage()"
+      class="w-[38px] h-[42px] cursor-pointer">
+      <svg width="11" height="23" viewBox="0 0 11 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.2148 21.87L1.52151 13.1767C0.494843 12.15 0.494843 10.47 1.52151 9.44333L10.2148 0.75" stroke="#090F41" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+    </button>
+
+    <!-- Pages -->
+    @for (page of pager.pages; track page.value) {
+
+ <button
+  (click)="pager.setCurrent(page.value)"
+  class="w-[38px] h-[42px] flex gap-2.5 p-2.5 rotate-0 opacity-100  text-[#090F41] text-[18px] text-center rounded-[10px] justify-center items-center cursor-pointer"
+  [class.bg-[#8B5E35]]="pager.getCurrent() === page.value"
+  [class.text-white]="pager.getCurrent() === page.value"
+  [class.text-center]="pager.getCurrent() === page.value"
+
+>
+  {{ page.label }}
+</button>
+
+    }
+
+    <!-- Next -->
+    <button
+      (click)="pager.next()"
+      [disabled]="pager.isLastPage()"
+      class="w-[38px] h-[42px] cursor-pointer">
+      <svg width="11" height="23" viewBox="0 0 11 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.75 21.87L9.44333 13.1767C10.47 12.15 10.47 10.47 9.44333 9.44333L0.75 0.75" stroke="#090F41" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+    </button>
+
+  </div>
+
+</pagination-template>
+
+
+</div>
+      </section>
+    </div>
+  </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default"; 
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@utility container{
+    margin-inline:auto;
+}
+.main-footer{
+    background-color: #2E2E2E;
+}
+.footer-w-h{
+    width: 1440px;
+    height: 454px;
+}
+.footer-left{
+    width: 516px;
+    height: 220px;
+}
+.footer-about{
+    /* padding-left: 100px; */
+    width: 169.3333282470703px;
+    height: 208px;
+    gap: 16px;
+}
+.btn-footer{
+    background-color:#9B7E5C ;
+    /* border: 1px;
+    border-radius: 10px;
+    padding: 12px 24px 12px 24px;
+    gap: 8px;
+    margin-left: 2px; */
+}
+.nav-style{
+    background-color: #F6F6F6;
+}
+.home-sec7{
+    width: 1440;
+    height: 1211;
+    background-color: #F6F6F6;
+}
+/* .input-valid {
+  @apply border-green-500 ring-green-500;
+}
+
+.input-invalid {
+  @apply border-red-500 ring-red-500;
+} */
+ .input-valid {
+  @apply !border-green-500 !ring-green-500 !pr-10 !bg-right !bg-no-repeat;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='green' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7' /%3E%3C/svg%3E"); */
+}
+
+.input-invalid {
+  @apply !border-red-500 !ring-red-500 !pr-10 !bg-right !bg-no-repeat;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='red' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /%3E%3C/svg%3E"); */
+}
+/* styles.css */
+.bg-multigrad {
+    
+  background: linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+              linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+              linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+}
+/* Navbar transparent for landing / hero pages */
+.nav-landing {
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0; /* بدل left عشان RTL */
+  width: 100%;
+  z-index: 50;
+
+  background: transparent;
+  box-shadow: none;
+  color: white;
+}
+
+
+
+

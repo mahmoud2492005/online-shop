@@ -1,0 +1,220 @@
+<div class=" container ">
+<!-- <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+  <ol class="list-reset flex gap-2 items-center">
+    
+    <li>
+      <a routerLink="/home" routerLinkActive="text-[#BE7B3D]"
+         class="block py-2 px-3 rounded md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200 text-[16px]"
+         aria-current="page">
+        Home
+      </a>
+    </li>
+
+    <li class="text-gray-300">›</li>
+
+    <li>
+      <a routerLink="/categories" routerLinkActive="text-[#BE7B3D]"
+         class="block py-2 px-3 rounded md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200 text-[16px]"
+         aria-current="page">
+        Categories
+      </a>
+    </li>
+
+    <li class="text-gray-300">›</li>
+
+    <li>
+      <a routerLink="/details/1" routerLinkActive="text-[#BE7B3D]"
+         class="block py-2 px-3 rounded md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200 text-[16px]"
+         aria-current="page">
+        details
+      </a>
+    </li>
+
+    <li class="text-gray-300">›</li>
+
+    <li>
+      <a routerLink="/cart" routerLinkActive="text-[#BE7B3D]"
+         class="block py-2 px-3 rounded md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200 text-[16px]"
+         aria-current="page">
+        cart
+      </a>
+    </li>
+
+  </ol>
+</nav> -->
+    <div class=" pt-24 flex items-center gap-2 text-sm text-gray-500 mb-2 pb-10 w-[494px] ">
+      <span routerLink="/home" class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[18px] leading-8 tracking-normal text-[#8B5E35] " >Home</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+       <span  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[18px] leading-8 tracking-normal text-[#8B5E35]" routerLink="/products" >Category</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+       <span  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[18px] leading-8 tracking-normal hover:text-[#8B5E35]" >Cart</span>
+    </div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+  <!-- Left: cart list -->
+  <div class="lg:col-span-2">
+    <div class="flex items-center justify-between mb-6">
+      <h1 class="text-[40px] font-['Poppins'] font-semibold  leading-normal tracking-normal text-[#151411]">
+        Cart <span class="text-[#8B5E35] font-['Poppins'] font-medium text-[18px] leading-none tracking-normal text-base ">{{cartData.products.length}} items</span>
+      </h1>
+    </div>
+
+    <!-- Product Card 1 -->
+@for (item of cartData.products; track item.product._id ) {
+          <div class="bg-[#FFFFFF] shadow-sm  mb-6 w-[735px] h-40 rounded-[10px] opacity-100 ">
+      <div class="flex items-center gap-6">
+
+        <div class="">
+            <img class="w-40 h-40  rounded-[8px]" [src]="item.product.imageCover" [alt]="item.product.title">
+
+        </div>
+
+        <div class="flex-1">
+         
+          <h2 class="text-lg font-semibold mb-3">{{item.product.category.name}}</h2>
+
+          <div class="flex items-center gap-4">
+            <div class="flex items-center border border-gray-200 rounded-md overflow-hidden">
+            <button (click)="getUpDateCartData(item.product._id , item.count-1)"  class="px-3 py-2 text-xl cursor-pointer">−</button>
+            <span>
+             <input type="text" [value]=item.count class=" rounded-base  focus:ring-[#8B5E35] focus:border-[#8B5E35]  w-12 text-center py-2 outline-none border-0">
+</span>
+            <button (click)="getUpDateCartData(item.product._id , item.count+1)"  class="px-3 py-2 text-xl cursor-pointer">+</button>
+
+            </div>
+
+            <button (click)="getDeleteCartData(item.product._id)" class="ml-2 cursor-pointer" title="Remove">
+           <svg fill="#8B5E35" width="25px" height="25px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#8B5E35"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M5.755,20.283,4,8H20L18.245,20.283A2,2,0,0,1,16.265,22H7.735A2,2,0,0,1,5.755,20.283ZM21,4H16V3a1,1,0,0,0-1-1H9A1,1,0,0,0,8,3V4H3A1,1,0,0,0,3,6H21a1,1,0,0,0,0-2Z"></path></g></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="text-right">
+
+          <div class="text-xl font-bold">{{item.price * item.count}}</div>
+
+
+        </div>
+
+      </div>
+    </div>
+<div class="w-[820px] h-px mb-5 " >
+      <svg width="820" height="1" viewBox="0 0 820 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="820" height="1" fill="#D1D1D8"/>
+</svg>
+</div>
+
+}
+    <!-- Product Card 2 -->
+
+
+    <!-- Promo Box -->
+    <!-- <div class="bg-[#8B5E35] border border-amber-200 rounded-lg p-4 text-[#8B5E35] flex items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1" fill="none" viewBox="0 0 24 24"
+           stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 16h-1v-4h-1M12 8h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+      </svg>
+      <div class="text-sm fa-regular text-[16px]">
+        10% Instant Discount with Federal Bank Debit Cards on a min spend of $150. TCA
+      </div>
+    </div>
+
+  </div> -->
+    <div class="bg-[rgba(139,94,53,0.26)]
+ border border-[#8B5E35] rounded-lg p-4 text-amber-900 flex items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1" fill="none" viewBox="0 0 24 24"
+           stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 16h-1v-4h-1M12 8h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+      </svg>
+      <div class="text-[16px] Regular">
+        10% Instant Discount with Federal Bank Debit Cards on a min spend of $150. TCA
+      </div>
+    </div>
+
+  </div>
+  <!-- Right: Order Summary -->
+<div >
+      <aside class="bg-white rounded-xl shadow-lg p-6 space-y-6">
+
+    <h3 class="text-xl font-medium text-[24px] text-[#090F41] mb-6">Order Summary</h3>
+
+    <div class="space-y-3 text-sm">
+
+      <div class="flex justify-between">
+        <span class="font-normal text-[16px] text-[#090F41] ">Price</span>
+        <span class=" font-normal text-[16px] line-through text-gray-400">{{cartData.totalCartPrice}} EGP</span>
+      </div>
+
+      <div class="flex justify-between">
+    <!-- <span class="line-through text-gray-400">1000 EGP</span> -->
+     <!-- {{((cartData.totalCartPrice*0.10).toFixed(2))}} -->
+
+        <span class="font-normal text-[16px] text-[#090F41]">Discount 10%</span>
+        <span class="font-normal text-[16px] text-[#090F41]">{{ cartData.totalCartPrice - (cartData.totalCartPrice * 0.10) | number:'1.2-2' }}EGP</span>
+      </div>
+
+      <div class="flex justify-between">
+        <span class="font-normal text-[16px] text-[#090F41]">Shipping</span>
+        <span class="font-normal text-[#8B5E35]">Free</span>
+      </div>
+
+      <div class="flex justify-between">
+        <span class="font-normal text-[16px] text-[#090F41]">Coupon Applied</span>
+        <span class="font-normal text-[16px] text-[#090F41]">0.00 EGP</span>
+      </div>
+
+      <hr class=" my-6" />
+            <div class="flex justify-between">
+        <span class="text-[16px] text-[#17183B] font-semibold">TOTal</span>
+        <span class="font-normal text-[16px] text-[#17183B]">{{((cartData.totalCartPrice)- (cartData.totalCartPrice*0.10)).toFixed(2)}}</span>
+      </div>
+
+                        <div class="flex justify-between">
+        <span class="text-[16px] text-[#17183B] font-medium ">Estimated Delivery by</span>
+        <span class="text-[16px] text-[#17183B] font-semibold">{{cartData.updatedAt |date:'dd/MM/yyyy'}}</span>
+      </div>
+
+
+
+              <!-- <div class="flex justify-between">
+        <span class="text-[16px] text-[#17183B] font-semibold">TOTal</span>
+        <span class="font-normal text-[16px] text-[#17183B]">10000 EGP</span>
+      </div> -->
+
+        <!-- <div class="text-right text-xs text-gray-500">
+          <div class="mb-1">Estimated Delivery by</div>
+          <div class="font-medium">01 Feb, 2023</div>
+        </div> -->
+              <!-- <div class="flex justify-between">
+        <span class="font-normal text-[16px] text-[#090F41]">Coupon Applied</span>
+        <span class="font-normal text-[16px] text-[#090F41]">0.00 EGP</span>
+      </div> -->
+      <!-- </div> -->
+
+    </div>
+
+    <!-- Coupon -->
+    <div class="flex gap-3">
+      <input type="text" placeholder="Coupon Code"
+             class="flex-1 border border-gray-200 rounded px-3 py-2 focus:ring-[#8B5E35] focus:border-[#8B5E35] items-center justify-center cursor-pointer " />
+          <button class="px-4 py-2 bg-[#8B5E35] text-white rounded  font-semibold text-[20px]">
+        Apply
+      </button>
+    </div>
+
+
+    <!-- Checkout -->
+    <button [routerLink]="['/checkout' , cartData._id]" class=" cursor-pointer w-full py-3 rounded-full bg-[#8B5E35] text-white font-semibold text-[20px] shadow">
+      Proceed to Checkout
+    </button>
+
+  </aside>
+</div>
+
+</div>
+<app-similar-products></app-similar-products>
+
+</div>

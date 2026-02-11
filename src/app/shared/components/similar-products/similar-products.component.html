@@ -1,0 +1,30 @@
+
+<div class="w-full bg-[#F8F8F8] min-h-screen  ">
+  <div class="container mx-auto ">
+    <div class="max-w-7xl pt-5 ">
+      <p class="  h-[43px]  text-[#090F41] font-['Poppins']  text-[40px] font-semibold leading-10 px-8 tracking-[0] sm:text-[26px]">
+        Similar products
+      </p>
+    </div>
+
+
+  </div>
+
+  <div class="grid grid-cols-12 gap-6 ">
+    <section class="col-span-12">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-2 sm:m-6 px-2 sm:px-10">
+        @for (proudct of proudctList.slice(0, 4)  ; track proudct.id) {
+          <app-card [proudct]="proudct"></app-card>
+        }
+      </div>
+
+
+    </section>
+  </div>
+</div>
+
+
+
+
+

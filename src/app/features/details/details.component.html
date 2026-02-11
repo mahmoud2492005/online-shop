@@ -1,0 +1,196 @@
+
+<section>
+
+<div class="container mx-auto px-4 py-20 sm:py-24 lg:py-32">
+    <div class="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-2 pb-10  w-full lg:w-[494px]  ">
+      <span routerLink="/home" class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[16px] sm:text-[18px] leading-8 tracking-normal text-[#8B5E35] " >Home</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+       <span  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[16px] sm:text-[18px] leading-8 tracking-normal text-[#8B5E35]" routerLink="/products" >Category</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+       <span  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[16px] sm:text-[18px] leading-8 tracking-normal hover:text-[#8B5E35]" >{{detailesData.category.name}}</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+       <span  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[16px] sm:text-[18px] leading-8 tracking-normal hover:text-[#8B5E35]" >{{detailesData.brand.name}}</span>
+    </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <!-- Left thumbnails -->
+    <div class="hidden lg:block lg:col-span-1 ">
+      <div class="flex flex-col gap-2 w-[72px] h-[388px] ">
+        <div class="w-[72px] h-[88px] rounded-lg overflow-hidden border border-[#8B5E35]  flex items-center justify-center">
+          <img [src]="detailesData.images[0]" class="object-cover w-[72px] h-[88px] rounded-[16px]">
+        </div>
+        <div class="w-[72px] h-[88px] rounded-lg overflow-hidden border border-[#8B5E35]  flex items-center justify-center">
+          <img [src]="detailesData.images[1]" class="object-cover w-[72px] h-[88px] rounded-[16px]">
+        </div>
+        <div class="w-[72px] h-[88px] rounded-lg overflow-hidden border border-[#8B5E35]  flex items-center justify-center">
+          <img [src]="detailesData.images[2]" class="object-cover w-[72px] h-[88px] rounded-[16px]">
+        </div>
+        <div class="w-[72px] h-[88px] rounded-lg overflow-hidden border border-[#8B5E35]  flex items-center justify-center">
+          <img [src]="detailesData.images[3]" class="object-cover w-[72px] h-[88px] rounded-[16px]">
+        </div>
+      </div>
+    </div>
+
+    <!-- Main big image -->
+    <div class="lg:col-span-5 rounded-lg  border-[#8B5E35] flex items-center justify-center overflow-hidden min-w-0 ">
+      <div class=" relative w-full max-w-[540px] ">
+
+
+<div class="w-full max:w-[549px] h-[350px] sm:h-[450px] lg:h-[631px] gap-2 rounded-2xl relative overflow-hidden">
+        <button (click)="toggleHeart(detailesData.id)" class=" absolute top-2 right-2 sm:right-4 z-20 bg-white p-2 rounded-full shadow  ">
+
+      @if (checkSolidHeart(detailesData.id)) {
+      <i class="fa-solid fa-heart text-[#8B5E35] "></i>
+
+
+      } @else {
+      <i class="fa-regular fa-heart text-gray-500   "></i>
+
+      }
+
+    </button>
+
+          <owl-carousel-o [options]="sliderDetailes">
+      
+
+                     <ng-template carouselSlide>
+
+        <img [src]="detailesData.images[0]" class="w-full h-full object-contain rounded-md block ">
+
+    </ng-template> 
+        <ng-template carouselSlide>
+        <img [src]="detailesData.images[1]" class="w-full h-full object-contain rounded-md block ">
+
+    </ng-template>  
+    <ng-template carouselSlide>
+        <img [src]="detailesData.images[2]" class="w-full h-full object-contain rounded-md block ">
+
+    </ng-template>  
+    <ng-template carouselSlide>
+        <img [src]="detailesData.images[3]" class="w-full h-full object-contain rounded-md block ">
+
+    </ng-template>
+<!-- </div> -->
+  
+  
+  </owl-carousel-o>
+
+
+</div>
+
+        <!-- arrows -->
+        <button class="hidden lg:flex items-center justify-center absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 shadow">
+          <svg class="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <button class="hidden lg:flex items-center justify-center absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-gray-200 shadow">
+          <svg class="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div class="lg:col-span-6 space-y-6 w-full lg:max-w-[527px] h-auto lg:h-[627px] gap-8">
+
+      <!-- rating -->
+      <!-- <div class="flex items-center gap-[5px] w-[79px] h-[21px]">
+        <div class="flex flex-nowrap items-center text-[#FFC000] ">
+          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.385 2.462a1 1 0 00-.364 1.118l1.286 3.966c.3.921-.755 1.688-1.54 1.118L10 13.347l-3.487 2.61c-.784.57-1.838-.197-1.539-1.118l1.286-3.966a1 1 0 00-.364-1.118L2.51 9.393c-.783-.57-.381-1.81.588-1.81h4.18a1 1 0 00.95-.69L9.05 2.927z"/></svg>
+        <span class="font-['Poppins'] font-medium text-[14px] leading-none tracking-normal  w-[58px] h-[21px] text-[#090F41]">{{detailesData.ratingsAverage}}({{detailesData.ratingsQuantity}})</span>
+
+        </div>
+
+      </div> -->
+            <div class="flex items-center gap-[5px] w-[79px] h-[21px] ">
+       <svg class="block top-0" width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.6502 0.246371C6.78684 -0.0821463 7.25222 -0.0821472 7.38886 0.24637L9.04173 4.22035C9.09933 4.35885 9.22958 4.45347 9.3791 4.46546L13.6693 4.80941C14.024 4.83784 14.1678 5.28044 13.8976 5.51191L10.6289 8.31192C10.515 8.4095 10.4652 8.56261 10.5 8.70851L11.4987 12.8951C11.5812 13.2412 11.2047 13.5147 10.9011 13.3292L7.22803 11.0858C7.10003 11.0076 6.93904 11.0076 6.81103 11.0858L3.13798 13.3292C2.83434 13.5147 2.45784 13.2412 2.54039 12.8951L3.53904 8.70851C3.57384 8.56261 3.52409 8.4095 3.41018 8.31192L0.141462 5.51191C-0.128753 5.28045 0.0150569 4.83784 0.369719 4.80941L4.65997 4.46546C4.80948 4.45347 4.93973 4.35885 4.99733 4.22035L6.6502 0.246371Z" fill="#FFC000"/>
+</svg>
+<span class=" pt-2.5 text-center font-['Poppins'] font-medium text-[14px] leading-none tracking-normal  w-[58px] h-[21px] text-[#090F41]">{{detailesData.ratingsAverage}}({{detailesData.ratingsQuantity}})</span>
+      </div>
+
+      <h1 class="text-[24px] sm:text-[28px] lg:text-[32px]  font-semibold text-gray-800">{{detailesData.title}}</h1>
+
+      <p class="text-[#667085] font-medium text-[16px]">
+        {{detailesData.description}}
+      </p>
+
+      <!-- colors -->
+      <div>
+        <div class="text-sm font-medium text-gray-700 mb-2">Color:{{color}}</div>
+        <div class="flex items-center gap-3">
+          <button (click)="color='Blue' " [ngClass]="{'w-12 h-12 border rounded-[47px] opacity-100': color === 'Blue'  }" class="w-9 h-9 border rounded-[25px] opacity-100 hover:w-12 hover:h-12 hover:rounded-[47px] " style="background:#3b82f6"></button>
+          <button (click)="color='White'"  [ngClass]="{'w-12 h-12 border rounded-[47px] opacity-100': color === 'White'  }"  class="w-9 h-9 border-2 rounded-[25px] opacity-100 hover:w-12 hover:h-12 hover:rounded-[47px] border-black " style="background:white" ></button>
+          <button (click)="color='Orange'"  [ngClass]="{'w-12 h-12 border rounded-[47px] opacity-100': color === 'Orange'  }"  class="w-9 h-9 border rounded-[25px] opacity-100 hover:w-12 hover:h-12 hover:rounded-[47px]" style="background:#c0843b"></button>
+          <button (click)="color='Black'"  [ngClass]="{'w-12 h-12 border rounded-[47px] opacity-100': color === 'Black'  }"  class="w-9 h-9 border rounded-[25px] opacity-100 hover:w-12 hover:h-12 hover:rounded-[47px]" style="background:#0f172a"></button>
+          <button (click)="color='Green'"  [ngClass]="{'w-12 h-12 border rounded-[47px] opacity-100': color === 'Green'  }"  class="w-9 h-9 border rounded-[25px] opacity-100 hover:w-12 hover:h-12 hover:rounded-[47px]" style="background:green"></button>
+        </div>
+      </div>
+
+      <!-- sizes -->
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <div class="text-[20px] font-medium text-gray-700">Size:<span class="text-[#8B5E35]">{{size}}</span></div>
+          <!-- <a class="text-[20px font-medium] text-[#8B5E35] hover:underline">Size Guide</a> -->
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <button (click)="size='Extra Small'" class="px-3 py-2 rounded-md border text-sm">XS</button>
+          <button (click)="size='Small'" class="px-3 py-2 rounded-md border text-sm">S</button>
+          <button (click)="size='Medium'" class="px-3 py-2 rounded-md border text-sm bg-white shadow">M</button>
+          <button (click)="size='Large'" class="px-3 py-2 rounded-md border text-sm">L</button>
+          <button (click)="size='Extra Large'" class="px-3 py-2 rounded-md border text-sm">XL</button>
+          <button (click)="size='Double XL'" class="px-3 py-2 rounded-md border text-sm">XXL</button>
+          <button (click)="size='Triple XL'" class="px-3 py-2 rounded-md border text-sm">XXL</button>
+        </div>
+      </div>
+
+      <!-- quantity + add to cart -->
+      <div class="">
+        <div class="w-[527px] h-6 pb-2 flex flex-nowrap">
+        <p class="font-poppins font-medium text-[16px] leading-4 tracking-[0%]">Quantity:   <span class="font-poppins font-medium text-[16px] leading-4 tracking-[0%] text-[#8B5E35]" >
+          @if(detailesData.quantity<10){
+            0
+
+          }
+          {{detailesData.quantity}}</span> </p>
+
+        </div>
+        <div class="flex flex-col sm:flex-row  w-full gap-3 opacity-100 ">
+          <div class=" w-full sm:w-[161px] h-[58px] flex justify-between opacity-100 border border-[#8B5E35] rounded-[12px] pt-3 pr-5 pb-3 pl-5" >
+            <button (click)="decrease()" class="px-4 py-2 text-2xl cursor-pointer"><svg width="14" height="2" viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.75 0.75H12.4167" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+                            <input type="text" value={{i}} class=" rounded-base   focus:ring-[#8B5E35] focus:border-[#8B5E35]  w-12 text-center py-2 outline-none border-0">
+            <button (click)="increase()"  class="px-4 py-2 text-2xl cursor-pointer"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.58333 0.75V12.4167M0.75 6.58333H12.4167" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</button>
+          </div>
+<div class="">
+                <button (click)="addProudctCartItem(detailesData._id)" class="  w-full sm:w-[354px]  cursor-pointer  h-[58px] gap-2 rounded-[12px] pt-3 pr-6 pb-3 pl-6 opacity-100 bg-[#8B5E35] text-center flex justify-center items-center text-[#FCFCFD] ">
+            ${{(detailesData.price)*i}} + Add to Cart
+          </button>
+</div>
+        </div>
+ 
+       
+
+        <div class=" mt-8 flex items-center  text-[15px] text-[#667085] gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 7a2 2 0 012-2h14a2 2 0 012 2M3 7v12a2 2 0 002 2h14a2 2 0 002-2V7"/>
+          </svg>
+          <span>Estimated Delivery: <b>{{detailesData.createdAt | date:'dd/MM/yyyy'}} – {{detailesData.updatedAt | date:'dd/MM/yyyy'}}</b></span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<app-similar-products></app-similar-products>
+</section>

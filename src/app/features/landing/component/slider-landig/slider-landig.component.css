@@ -1,0 +1,56 @@
+
+::ng-deep .owl-nav {
+
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  z-index: 10;
+    left: 0;
+  right: 0;
+
+
+}
+ ::ng-deep .owl-theme .owl-nav [class*=owl-] {
+    background: none !important;   
+    border: none !important;      
+    box-shadow: none !important;   
+}
+
+::ng-deep .owl-theme .owl-nav [class*=owl-]:hover {
+    background: none !important;   
+}
+
+
+
+/* ::ng-deep .owl-nav button {
+  border: none;
+  pointer-events: all;
+  border-radius: 50%;
+  padding: 5px;
+} */
+
+
+
+/* ::ng-deep .owl-nav button div {
+  display: inline-block;
+} */
+::ng-deep .owl-theme .owl-nav [class*=owl-]{
+    background-color: white;
+    
+}
+::ng-deep .owl-theme .owl-nav [class*=owl-]:hover{
+    background-color: whitesmoke;
+    
+}
+
+
+
+
+
+
+
+

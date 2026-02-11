@@ -1,0 +1,93 @@
+
+<div class="w-full bg-[#F8F8F8] min-h-screen pt-12 ">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="  h-[43px] text-center text-[#8B5E35] font-['Hedvig_Letters_Serif'] font-normal text-[32px] leading-[100%] tracking-[0] sm:text-[26px]">
+        {{title}}
+      </p>
+      <p class=" h-[60px] opacity-100 text-[#090F41] font-['Poppins'] font-semibold text-3xl sm:text-4xl leading-[100%] tracking-normal text-center">
+        {{text}}
+      </p>
+    </div>
+
+
+  </div>
+
+  <div class="grid grid-cols-12 gap-6 ">
+    <section class="col-span-12">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 m-4 sm:m-8 px-2 sm:px-10">
+        @for (proudct of proudctList.slice(0, sliceNum)  ; track proudct.id) {
+          <app-card [proudct]="proudct"></app-card>
+        }
+      </div>
+
+      <div class="flex justify-center mt-4 mb-8 ">
+        <button (click)="loadMore()" class="cursor-pointer w-[143px] h-[46px] rounded-4xl p-2 border border-[#8B5E35] flex items-center justify-center gap-2">
+          <span class="font-['poppins'] font-medium text-[18px] leading-[100%] tracking-[0] text-[#8B5E35] flex items-center gap-2">
+            See All <img src="/img/right.svg" alt="leftMark" class="w-4 h-4">
+          </span>
+        </button>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+
+
+<!-- <nav class="  w-full ">
+  <div class="">
+
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
+    </button>
+    <div class=" " id="navbar-default">
+      <ul class=" hidden md:flex flex-wrap items-center justify-around bg-[#EEEEEE] rounded-full w-full max-w-[432px] m-auto mt-5 ">
+        <li>
+                  <button (click)="[filterBy='Full Outfit']" class="px-3 py-2 rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600"
+        [style.background]="filterBy === 'Full Outfit' ? '#8B5E35' : ''"
+        [style.color]="filterBy === 'Full Outfit' ? 'white' : ''">
+        Full Outfit
+      </button>
+
+        </li>
+        <li>
+      <button (click)="[filterBy='Women']" class="px-3 py-2 rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600"
+        [style.background]="filterBy === 'Women' ? '#8B5E35' : ''"
+        [style.color]="filterBy === 'Women' ? 'white' : ''">
+        Women
+      </button>
+        </li>
+<li>
+      <button (click)="[filterBy='Men']" class="px-3 py-2 rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600"
+        [style.background]="filterBy === 'Men' ? '#8B5E35' : ''"
+        [style.color]="filterBy === 'Men' ? 'white' : ''">
+        Men
+      </button>
+</li>
+<li>
+      <button (click)="[filterBy='Electronics']" class="px-3 py-2 rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600"
+        [style.background]="filterBy === 'Electronics' ? '#8B5E35' : ''"
+        [style.color]="filterBy === 'Electronics' ? 'white' : ''">
+        Electronics
+      </button>
+</li>
+<li>
+      <button (click)="[filterBy='More']" class="px-3 py-2 rounded-full hover:bg-[#8B5E3C] hover:text-white font-medium bg-[#EEEEEE] text-gray-600"
+        [style.background]="filterBy === 'More' ? '#8B5E35' : ''"
+        [style.color]="filterBy === 'More' ? 'white' : ''">
+        More
+      </button>
+</li>
+
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+
+
+
+

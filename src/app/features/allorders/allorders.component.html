@@ -1,0 +1,117 @@
+    <div class=" ps-52 pt-12 flex items-center gap-2 text-sm text-gray-500 mb-2 pb-10 w-[494px] ">
+      <span routerLink="/home" class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[18px] leading-8 tracking-normal text-[#8B5E35] " >Home</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+       <span routerLink="/cart" class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[18px] leading-8 tracking-normal text-[#8B5E35]" >Cart</span>
+       <span class="" > <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#9D9DAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 
+       <span  class=" cursor-pointer   h-8 font-[Poppins] font-medium text-[18px] leading-8 tracking-normal hover:text-[#8B5E35]" >allOrders</span>
+    </div>
+@for (order of allorderData; track order.id) {
+  <div id="invoice" >
+    <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-2xl p-10  transition-all duration-300 hover:shadow-3xl hover:scale-[1.01]">
+  <!-- الفاتوره هنا -->
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
+    <h2 class="text-3xl font-extrabold text-gray-800 mb-3 sm:mb-0">Invoice</h2>
+    <span class="text-gray-500 text-base">{{ order.createdAt | date:'dd MMM, yyyy, h:mm a' }}
+</span>
+  </div>
+
+  <!-- User & Shipping Info -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+    
+    <!-- User Info -->
+    <div class="bg-gray-50 p-4 rounded-lg shadow-inner hover:shadow-md transition-shadow duration-300">
+      <h3 class="font-semibold text-gray-700 text-lg mb-3">User Info</h3>
+      <p><span class="font-medium">Name:</span> {{ order.user.name }}</p>
+      <p><span class="font-medium">Email:</span> {{ order.user.email }}</p>
+      <p><span class="font-medium">Phone:</span> {{ order.shippingAddress.phone }}</p>
+    </div>
+
+    <!-- Shipping Info -->
+    <div class="bg-gray-50 p-4 rounded-lg shadow-inner hover:shadow-md transition-shadow duration-300">
+      <h3 class="font-semibold text-gray-700 text-lg mb-3">Shipping Info</h3>
+      <p><span class="font-medium">City:</span> {{ order.shippingAddress.city }}</p>
+      <p><span class="font-medium">Address:</span> {{ order.shippingAddress.details }}</p>
+      <p><span class="font-medium">Phone:</span> {{ order.shippingAddress.phone }}</p>
+    </div>
+  </div>
+
+  <!-- Payment Info -->
+  <div class="bg-gray-50 p-4 rounded-lg shadow-inner mb-8 hover:shadow-md transition-shadow duration-300">
+    <h3 class="font-semibold text-gray-700 text-lg mb-3">Payment Info</h3>
+    <p><span class="font-medium">Method:</span> {{ order.paymentMethodType }}</p>
+    <p>
+      <span class="font-medium">Status:</span>
+      <span [ngClass]="order.isPaid ? 'text-green-600 font-bold' : 'text-red-600 font-bold'">
+        {{ order.isPaid ? 'Paid' : 'Not Paid' }}
+      </span>
+    </p>
+    <p>
+      <span class="font-medium">Delivered:</span>
+      <span [ngClass]="order.isDelivered ? 'text-green-600 font-bold' : 'text-red-600 font-bold'">
+        {{ order.isDelivered ? 'Yes' : 'No' }}
+      </span>
+    </p>
+    <p><span class="font-medium">Paid At:</span>{{ order.createdAt | date:'dd MMM, yyyy, h:mm a' }}</p>
+    <p><span class="font-medium">Update At:</span>{{ order.updatedAt| date:'dd MMM, yyyy, h:mm a' }}</p>
+  </div>
+
+  <!-- Products Table -->
+  <div class="overflow-x-auto rounded-lg shadow-inner">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="px-6 py-3 text-left text-gray-600 text-base font-semibold uppercase tracking-wider">Product</th>
+          <th class="px-6 py-3 text-left text-gray-600 text-base font-semibold uppercase tracking-wider">Brand</th>
+          <th class="px-6 py-3 text-left text-gray-600 text-base font-semibold uppercase tracking-wider">Qty</th>
+          <th class="px-6 py-3 text-left text-gray-600 text-base font-semibold uppercase tracking-wider">Price</th>
+          <th class="px-6 py-3 text-left text-gray-600 text-base font-semibold uppercase tracking-wider">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-100">
+        @for (item of order.cartItems; track item._id) {
+        <tr class="transition-transform duration-200 hover:bg-gray-50 hover:scale-[1.01] cursor-pointer">
+          <td class="px-6 py-4 flex items-center gap-3">
+            <img [src]="item.product.imageCover" class="w-14 h-14 object-cover rounded-lg shadow-sm" />
+            <span class="text-gray-800 font-medium">{{ item.product.title }}</span>
+          </td>
+          <td class="px-6 py-4 text-gray-700 font-medium">{{ item.product.brand.name }}</td>
+          <td class="px-6 py-4 text-gray-700 font-medium">{{ item.count }}</td>
+          <td class="px-6 py-4 text-gray-700 font-medium">{{ item.price | number:'1.2-2' }}</td>
+          <td class="px-6 py-4 text-gray-700 font-bold">{{ (item.count * item.price) | number:'1.2-2' }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Total -->
+<div class="flex justify-between mt-8">
+    <div class="">
+    <div class="w-full sm:w-72 bg-gray-50 p-6 rounded-lg shadow-inner">
+      <p class="flex justify-between mb-3 text-gray-700 font-medium">
+        <span>Tax:</span>
+        <span>{{ order.taxPrice | number:'1.2-2' }}</span>
+      </p>
+      <p class="flex justify-between mb-3 text-gray-700 font-medium">
+        <span>Shipping:</span>
+        <span>{{ order.shippingPrice | number:'1.2-2' }}</span>
+      </p>
+      <p class="flex justify-between font-bold text-xl text-gray-800 border-t border-gray-200 pt-2">
+        <span>Total:</span>
+        <span>{{ order.totalOrderPrice | number:'1.2-2' }}</span>
+      </p>
+    </div>
+  </div>
+  <!-- <div class=" flex  items-center">
+    <button (click)="printInvoice()" class="bg-[#8B5E35] w-full md:w-[303px] h-[58px] flex items-center justify-center gap-2 p-2 rounded-2xl md:rounded-4xl opacity-100">
+      <span class="text-white font-poppins font-semibold text-base md:text-[20px] leading-tight md:leading-[100%] tracking-normal">
+        Print
+      </span>
+    </button>
+  </div> -->
+</div>
+
+</div>
+</div>
+}

@@ -1,0 +1,63 @@
+    <div class=" bg-white shadow-md rounded-xl p-3 relative hover:shadow-lg transition w-[295] h-[409] ">
+<div [routerLink]="['/details', proudct.slug , proudct.id]">
+    <!-- Image placeholder -->
+  <div class="w-[279px] h-[275px] bg-gray-200 rounded-lg relative overflow-hidden">
+    <img [src]=" proudct.imageCover " [alt]="proudct.title">
+
+    <!-- Discount badge -->
+     @if (proudct.priceAfterDiscount) {
+    <span class="absolute bottom-2 left-2 bg-[#A06A44] text-white text-sm font-semibold px-2 py-1 rounded">
+      -{{ (((proudct.price - proudct.priceAfterDiscount) / proudct.price) * 100 ).toFixed(2)}}%
+
+    </span>
+     }
+
+
+    <!-- Wishlist icon -->
+
+
+  </div>
+
+  <!-- Title -->
+  <h3 class="mt-3 text-lg font-semibold text-gray-800">
+    {{proudct.category.name}}
+  </h3>
+
+  <!-- Rating -->
+  <div class="flex items-center gap-1 text-sm mt-1">
+    <span class="text-yellow-400 text-base">★</span>
+    <span class="font-semibold text-gray-700">{{proudct.ratingsAverage}}</span>
+    <span class="text-gray-400 text-xs">({{proudct.ratingsQuantity}})</span>
+  </div>
+
+  <!-- Price -->
+  <div class="flex items-center gap-2 mt-2">
+    @if (proudct.priceAfterDiscount) {
+    <span class="text-[#A06A44] font-bold text-lg">{{proudct.priceAfterDiscount}} EGP</span>
+    <span class="line-through text-gray-400">{{proudct.price}} EGP</span>
+    }@else{
+<span class="text-[#A06A44] font-bold text-lg ">{{proudct.price}} EGP</span>
+    }
+    
+
+  </div>
+</div>
+
+  <!-- Add button -->
+  <button  (click)="addProudctCartItem(proudct._id) ; " class="absolute bottom-3 right-3 bg-[rgb(160,106,68)] text-white w-8 h-8 rounded-sm  cursor-pointer flex items-center justify-center  text-lg font-bold">
+    +
+  </button>
+        <button (click)="toggleHeart(proudct.id)" class="absolute top-2 right-2 bg-white p-2 rounded-full shadow  ">
+
+      @if (checkSolidHeart(proudct.id)) {
+      <i class="fa-solid fa-heart text-[#8B5E35] "></i>
+
+
+      } @else {
+      <i class="fa-regular fa-heart text-gray-500   "></i>
+
+      }
+
+    </button>
+
+</div>

@@ -1,0 +1,82 @@
+<section class="container">
+  
+    
+<nav class=" nav-style   bg-transparent  fixed w-full z-50 top-0 start-0  border-default  "
+>
+  <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto  py-3 px-4">
+    <a (click)="signOutLanding()" routerLink="/landing" routerLinkActive="text-[#BE7B3D]"  class="items-center space-x-3 rtl:space-x-reverse" >
+    <img src="/img/Trendify2.svg" alt="trendify">
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary" aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
+    </button>
+    <div class="hidden grow w-full md:flex md:w-auto" id="navbar-default">
+@if (isLogin===true|| isLanding===true) {      <ul class="font-medium ms-auto flex  items-center flex-col p-4 md:p-0 mt-4 border border-default rounded-base  md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 ">
+        <li>
+          <a routerLink="/home" routerLinkActive="text-[#BE7B3D]" class="block py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page">Home</a>
+      </li>
+        <!-- <li>
+          <a routerLink="/cart" routerLinkActive="text-[#BE7B3D]" class="block py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page">Cart</a>
+      </li> -->
+        <li>
+          <a routerLink="/products" routerLinkActive="text-[#BE7B3D]" class="block py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page">Products</a>
+      </li>
+        <!-- <li>
+          <a routerLink="/services" routerLinkActive="text-[#BE7B3D]" class="block py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page">FlashSale</a>
+      </li> -->
+        <li>
+          <a routerLink="/brands" routerLinkActive="text-[#BE7B3D]" class="block py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page">Brands</a>
+      </li>
+        <li>
+          <a routerLink="/contact" routerLinkActive="text-[#BE7B3D]" class="block py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page">Contact Us</a>
+      </li>
+      </ul>}
+      <ul class="font-medium ms-auto flex items-center flex-col p-4 md:p-0 mt-4 border border-default rounded-base  md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0  flex-nowrap ">
+@if (isLogin===true) {  
+
+          @if(isPageProudcts===true){
+          <a routerLink="/FavoriteProducts" routerLinkActive="text-[#BE7B3D]" class=" py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page"><i class="fa-regular fa-heart"></i></a>
+
+          }
+           @else if (isPageProudcts===false) {
+          <a routerLink="" routerLinkActive="" class="block py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a>
+
+          }
+
+     <li class="flex items-center space-x-2">
+      <div class="relative">
+          <a routerLink="/cart" routerLinkActive="text-[#BE7B3D]" class="block py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page"><i class="fa-solid fa-cart-arrow-down"></i></a>
+@if (count>0) {
+      <span
+      class="absolute -top-3 -right-3   text-[#BE7B3D] text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-[#9D9DAA]  shadow-md"
+    >
+      {{count}}
+    </span>
+}
+      </div>
+          <a (click)="signOutBridge()" routerLinkActive="" class="block py-2 px-3   rounded   md:p-0 text-[#9D9DAA] hover:text-[#BE7B3D] transition-colors duration-200" aria-current="page"><i class="fa-regular fa-user"></i></a>
+
+
+      </li>}
+@if (isLogin===false) {        <li>
+
+
+        <button type="button"  class="   border border-[#BE7B3D] block box-border leading-5 rounded-full px-8 py-1.5 text-[#9D9DAA] hover:bg-[#8B5E35] hover:text-white focus:outline-none focus:ring-4 focus:ring-neutral-tertiary transition-colors duration-200"><a routerLink="/login" routerLinkActive="text-[#BE7B3D]">Login</a></button>
+
+
+      </li>
+        <li>
+        <button type="button"  class="border border-[#BE7B3D] block box-border leading-5 rounded-full px-8 py-1.5 text-[#9D9DAA] hover:bg-[#8B5E35] hover:text-white focus:outline-none focus:ring-4 focus:ring-neutral-tertiary transition-colors duration-200"><a routerLink="/register" routerLinkActive="text-[#BE7B3D]">Sign Up</a></button>
+      </li>}
+        <!-- <li>
+        <button type="button"  class="border border-[#BE7B3D] block box-border leading-5 rounded-full px-8 py-1.5 text-[#9D9DAA] hover:bg-[#8B5E35] hover:text-white focus:outline-none focus:ring-4 focus:ring-neutral-tertiary transition-colors duration-200">Sign out</button>
+      </li> -->
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+</section>
